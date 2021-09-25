@@ -2,11 +2,11 @@
 lock "~> 3.16.0"
 
 set :application, "cp-tutorial-2"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:TetsuyaAzami/cp-tutorial-2.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
+set :branch, ENV['BRANCH'] || "main"
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/cp-tutorial-2"
 
@@ -37,3 +37,6 @@ set :deploy_to, "/var/www/cp-tutorial-2"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :rbenv_ruby, File.read('.ruby-version').strip
+append :linked_dirs, '.bundle'
